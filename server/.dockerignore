@@ -1,0 +1,6 @@
+  
+*.md
+!README*.md
+README-secret.md
+.gitignore
+node_modules
