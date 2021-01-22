@@ -1,4 +1,4 @@
-# Gerenciador de Estabelecimentos
+<h1 align="center">Gerenciador de Estabelecimentos</h1>
 
 <p align="center">
   <a href="LICENSE" style="text-decoration: none">
