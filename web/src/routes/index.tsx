@@ -5,6 +5,8 @@ import Route from './Route';
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import Home from '../pages/Home';
+import CreateEstablishment from '../pages/CreateEstablishment';
+import EstablishmentDetails from '../pages/EstablishmentDetails';
 
 const Routes: React.FC = () => (
   <Switch>
@@ -12,6 +14,16 @@ const Routes: React.FC = () => (
     <Route path="/signup" component={SignUp} />
 
     <Route path="/home" isPrivate component={Home} />
+    <Route
+      path="/create-establishment"
+      isPrivate
+      component={CreateEstablishment}
+    />
+    <Route
+      path="/establishment-details"
+      isPrivate
+      component={EstablishmentDetails}
+    />
 
     <Route
       path="*"

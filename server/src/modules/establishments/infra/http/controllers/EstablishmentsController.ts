@@ -5,7 +5,6 @@ import { container } from 'tsyringe';
 import IndexEstablishmentsService from '@modules/establishments/services/IndexEstablishmentsService';
 import UpdateEstablishmentService from '@modules/establishments/services/UpdateEstablishmentService';
 import RemoveEstablishmentService from '@modules/establishments/services/RemoveEstablishmentService';
-import IEstablishmentDTO from '@modules/establishments/dtos/IEstablishmentDTO';
 import CreateEstablishmentService from '@modules/establishments/services/CreateEstablishmentService';
 
 class EstablishmentsController {
@@ -28,7 +27,7 @@ class EstablishmentsController {
       zipcode,
       city,
       state,
-    }: IEstablishmentDTO = request.body;
+    } = request.body;
     const userId = request.user.id;
 
     const updateEstablishment = container.resolve(CreateEstablishmentService);
@@ -44,6 +43,7 @@ class EstablishmentsController {
         zipcode,
         city,
         state,
+        avatar: request.file.filename,
       },
       userId,
     );

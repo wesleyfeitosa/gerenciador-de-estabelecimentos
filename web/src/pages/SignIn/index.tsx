@@ -78,7 +78,7 @@ function SignIn() {
         setLoading(false);
       }
     },
-    [addToast, signIn]
+    [addToast, signIn, push]
   );
 
   return (

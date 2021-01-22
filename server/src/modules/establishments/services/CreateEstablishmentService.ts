@@ -1,6 +1,7 @@
 import { injectable, inject } from 'tsyringe';
 
 import AppError from '@shared/errors/AppError';
+import IStorageProvider from '@shared/container/providers/StorageProvider/models/IStorageProvider';
 import IEstablishmentsRepository from '../repositories/IEstablishmentsRepository';
 import Establishment from '../infra/typeorm/entities/Establishment';
 import IEstablishmentDTO from '../dtos/IEstablishmentDTO';
@@ -18,6 +19,9 @@ class CreateEstablishmentService {
 
     @inject('AddressesRepository')
     private addressesRepository: IAddressesRepository,
+
+    @inject('StorageProvider')
+    private storageProvider: IStorageProvider,
   ) {}
 
   public async execute(
@@ -31,6 +35,7 @@ class CreateEstablishmentService {
       zipcode,
       city,
       state,
+      avatar,
     }: IEstablishmentDTO,
     userId: string,
   ): Promise<Establishment> {
@@ -51,11 +56,17 @@ class CreateEstablishmentService {
 
     await this.addressesRepository.save(address);
 
+    const filename = await this.storageProvider.saveFile(
+      avatar,
+      'establishment_avatars',
+    );
+
     const establishment = await this.establishmentsRepository.create({
       name,
       phone,
       type,
       address,
+      avatar: filename,
     });
 
     await this.establishmentsRepository.save(establishment);
