@@ -40,15 +40,17 @@ function SignUp() {
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
-          name: Yup.string()
-          .required('Nome obrigatório'),
+          name: Yup.string().required('Nome obrigatório'),
           email: Yup.string()
-          .required('Email obrigatório')
-          .email('Digite um e-mail válido'),
+            .required('Email obrigatório')
+            .email('Digite um e-mail válido'),
           password: Yup.string().min(6, 'No mínimo 6 dígitos'),
           password_confirmation: Yup.string()
             .min(6, 'Senha deve ter no mínimo 6 dígitos')
-            .oneOf([Yup.ref('password'), undefined], 'As senhas devem ser iguais'),
+            .oneOf(
+              [Yup.ref('password'), undefined],
+              'As senhas devem ser iguais'
+            ),
         });
 
         await schema.validate(data, {
@@ -64,7 +66,8 @@ function SignUp() {
         addToast({
           type: 'success',
           title: 'Cadastro realizado',
-          description: 'Você já pode fazer o seu logon no Gerenciamento de Estabelecimentos!',
+          description:
+            'Você já pode fazer o seu logon no Gerenciamento de Estabelecimentos!',
         });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -79,7 +82,8 @@ function SignUp() {
         addToast({
           type: 'error',
           title: 'Error no cadastro',
-          description: 'Ocorreu um erro ao fazer o cadastro cheque as credenciais',
+          description:
+            'Ocorreu um erro ao fazer o cadastro cheque as credenciais',
         });
 
         setLoading(false);
@@ -90,63 +94,62 @@ function SignUp() {
 
   return (
     <Container>
-
       <Content>
         <FormContainer>
-        <Form ref={formRef} onSubmit={handleSubmit}>
-          <Title>Gerenciador de Estabelecimentos</Title>
+          <Form ref={formRef} onSubmit={handleSubmit}>
+            <Title>Gerenciador de Estabelecimentos</Title>
 
-          <InputField>
-            <span>Nome</span>
-            <Input
-              name="name"
-              type="text"
-              icon={FiUser}
-              placeholder="Insira seu nome"
-            />
-          </InputField>
+            <InputField>
+              <span>Nome</span>
+              <Input
+                name="name"
+                type="text"
+                icon={FiUser}
+                placeholder="Insira seu nome"
+              />
+            </InputField>
 
-          <InputField>
-            <span>E-mail</span>
-            <Input
-              name="email"
-              type="text"
-              icon={FiUser}
-              placeholder="Insira seu e-mail"
-            />
-          </InputField>
+            <InputField>
+              <span>E-mail</span>
+              <Input
+                name="email"
+                type="text"
+                icon={FiUser}
+                placeholder="Insira seu e-mail"
+              />
+            </InputField>
 
-          <InputField>
-            <span>Senha</span>
-            <Input
-              name="password"
-              type="password"
-              icon={FiLock}
-              placeholder="Insira sua senha"
-            />
-          </InputField>
+            <InputField>
+              <span>Senha</span>
+              <Input
+                name="password"
+                type="password"
+                icon={FiLock}
+                placeholder="Insira sua senha"
+              />
+            </InputField>
 
-          <InputField>
-            <span>Confirmação da Senha</span>
-            <Input
-              name="password_confirmation"
-              type="password"
-              icon={FiLock}
-              placeholder="Insira sua senha novamente"
-            />
-          </InputField>
+            <InputField>
+              <span>Confirmação da Senha</span>
+              <Input
+                name="password_confirmation"
+                type="password"
+                icon={FiLock}
+                placeholder="Insira sua senha novamente"
+              />
+            </InputField>
 
-          <Button type="submit" loading={loading} disabled={loading}>
-            Criar Usuário
-          </Button>
+            <Button type="submit" loading={loading} disabled={loading}>
+              Criar Usuário
+            </Button>
 
-          <ToSignInContainer>
-            <ToSignInText>
-              Já tem uma conta cadastrada?{' '}
-              <LinkToSignIn to="/singin">Fazer Logon</LinkToSignIn>
-            </ToSignInText>
-          </ToSignInContainer>
-        </Form>
+            <ToSignInContainer>
+              <ToSignInText>
+                Já tem uma conta cadastrada?{' '}
+                <LinkToSignIn to="/singin">Fazer Logon</LinkToSignIn>
+              </ToSignInText>
+            </ToSignInContainer>
+          </Form>
         </FormContainer>
       </Content>
 

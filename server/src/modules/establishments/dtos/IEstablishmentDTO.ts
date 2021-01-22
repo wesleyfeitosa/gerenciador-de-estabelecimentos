@@ -8,4 +8,5 @@ export default interface IEstablishmentDTO {
   zipcode: string;
   city: string;
   state: string;
+  avatar: string;
 }

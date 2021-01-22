@@ -5,4 +5,5 @@ export default interface ICreateEstablishmentDTO {
   phone: string;
   type: string;
   address: Address;
+  avatar: string;
 }

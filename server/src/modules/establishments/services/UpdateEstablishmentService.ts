@@ -27,7 +27,7 @@ class UpdateEstablishmentService {
       zipcode,
       city,
       state,
-    }: IEstablishmentDTO,
+    }: Partial<IEstablishmentDTO>,
     establishmentId: string,
     userId: string,
   ): Promise<Establishment> {

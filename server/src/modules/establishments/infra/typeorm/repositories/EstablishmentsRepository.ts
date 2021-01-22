@@ -40,12 +40,14 @@ class EstablishmentsRepository implements IEstablishmentsRepository {
     phone,
     type,
     address,
+    avatar,
   }: ICreateEstablishmentDTO): Promise<Establishment> {
     const establishment = this.ormRepository.create({
       name,
       phone,
       type,
       address,
+      avatar,
     });
 
     return establishment;
