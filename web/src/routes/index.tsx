@@ -7,6 +7,7 @@ import SignUp from '../pages/SignUp';
 import Home from '../pages/Home';
 import CreateEstablishment from '../pages/CreateEstablishment';
 import EstablishmentDetails from '../pages/EstablishmentDetails';
+import EditEstablishment from '../pages/EditEstablishment';
 
 const Routes: React.FC = () => (
   <Switch>
@@ -24,6 +25,7 @@ const Routes: React.FC = () => (
       isPrivate
       component={EstablishmentDetails}
     />
+    <Route path="/edit-establishment" isPrivate component={EditEstablishment} />
 
     <Route
       path="*"

@@ -14,10 +14,32 @@ export const Content = styled.div`
   width: 90vw;
 `;
 
+export const SearchContainer = styled.div`
+  margin-top: 16px;
+
+  display: flex;
+  justify-content: flex-end;
+
+  select {
+    margin-right: 12px;
+  }
+
+  button {
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    border-radius: 30px;
+    background-color: #00bfa6;
+    color: #ffffff;
+  }
+`;
+
 export const EstablishmentTable = styled.table`
   width: 100%;
   border-collapse: collapse;
-  margin: 20px;
+  margin: 20px 0;
 `;
 
 export const TableHeaderLine = styled.tr`

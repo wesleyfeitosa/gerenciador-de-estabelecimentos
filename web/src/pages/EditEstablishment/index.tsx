@@ -3,7 +3,7 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import { FiUser, FiLock, FiCamera } from 'react-icons/fi';
 import * as Yup from 'yup';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import Button from '../../components/Button';
@@ -25,7 +25,27 @@ import {
   ButtonContainer,
 } from './styles';
 
-interface CreateEstablishmentFormData {
+interface EstablishmentParam {
+  establishment: {
+    id: string;
+    name: string;
+    phone: string;
+    type: string;
+    address: {
+      street: string;
+      street_number: number;
+      neighborhood: string;
+      zipcode: string;
+      city: string;
+      state: string;
+    };
+    avatar: string;
+    avatar_url: string;
+  };
+}
+
+interface EditEstablishmentFormData {
+  establishment_id: string;
   name: string;
   phone: string;
   type: string;
@@ -37,16 +57,20 @@ interface CreateEstablishmentFormData {
   state: string;
 }
 
-function CreateEstablishment() {
+function EditEstablishment() {
+  const { state } = useLocation<EstablishmentParam>();
+  const [establishment] = useState(state.establishment);
+
   const [loading, setLoading] = useState(false);
-  const [avatarFile, setAvatarFile] = useState({} as File);
-  const [selectedFileUrl, setSelectedFilesUrl] = useState('');
+  const [selectedFileUrl, setSelectedFilesUrl] = useState(
+    establishment.avatar_url
+  );
   const formRef = useRef<FormHandles>(null);
   const { addToast } = useToast();
   const { push } = useHistory();
 
-  const handleCreateEstablishment = useCallback(
-    async (data: CreateEstablishmentFormData, { reset }) => {
+  const handleEditEstablishment = useCallback(
+    async (data: EditEstablishmentFormData, { reset }) => {
       try {
         setLoading(true);
         formRef.current?.setErrors({});
@@ -67,40 +91,18 @@ function CreateEstablishment() {
           abortEarly: false,
         });
 
-        if (!avatarFile) {
-          addToast({
-            type: 'error',
-            title: 'Erro no upload da foto',
-            description: 'A foto do estabelecimento é obrigatória.',
-          });
-          return;
-        }
+        data.establishment_id = establishment.id;
 
-        const formData = new FormData();
-
-        formData.append('name', data.name);
-        formData.append('phone', data.phone);
-        formData.append('type', data.type);
-        formData.append('street', data.street);
-        formData.append('street_number', String(data.street_number));
-        formData.append('neighborhood', data.neighborhood);
-        formData.append('zipcode', data.zipcode);
-        formData.append('city', data.city);
-        formData.append('state', data.state);
-        formData.append('avatar', avatarFile);
-
-        await api.post('/establishments', formData);
+        await api.put('/establishments', data);
 
         addToast({
           type: 'success',
-          title: 'Cadastro realizado',
-          description: 'Estabelecimento cadastrado com sucesso!',
+          title: 'Estabelecimento atualizado',
+          description: 'Estabelecimento atualizado com sucesso!',
         });
 
         setLoading(false);
         reset();
-        setAvatarFile({} as File);
-        setSelectedFilesUrl('');
         push('/home');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -114,35 +116,63 @@ function CreateEstablishment() {
 
         addToast({
           type: 'error',
-          title: 'Error no cadastro',
-          description: 'Ocorreu um erro na criação do estabelecimento',
+          title: 'Erro na atualização',
+          description: 'Ocorreu um erro na atualização do estabelecimento',
         });
 
         setLoading(false);
       }
     },
-    [addToast, push, avatarFile]
+    [addToast, push, establishment.id]
   );
 
-  const handleAvatarChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      const file = e.target.files[0];
-      const fileUrl = URL.createObjectURL(file);
+  const handleAvatarChange = useCallback(
+    async (e: ChangeEvent<HTMLInputElement>) => {
+      if (e.target.files) {
+        const formData = new FormData();
+        const file = e.target.files[0];
 
-      setAvatarFile(file);
-      setSelectedFilesUrl(fileUrl);
-    }
-  }, []);
+        const fileUrl = URL.createObjectURL(file);
+
+        formData.append('avatar', file);
+
+        await api.patch(`/avatar/${establishment.id}`, formData);
+
+        setSelectedFilesUrl(fileUrl);
+
+        addToast({
+          type: 'success',
+          title: 'Avatar atualizado',
+          description: 'Avatar atualizado com sucesso!',
+        });
+      }
+    },
+    [addToast, establishment.id]
+  );
 
   return (
     <Container>
       <Header />
 
       <Content>
-        <TitlePage>Cadastre um novo estabelecimento aqui</TitlePage>
+        <TitlePage>Edite o estabelecimento aqui</TitlePage>
 
         <FormContainer>
-          <Form ref={formRef} onSubmit={handleCreateEstablishment}>
+          <Form
+            ref={formRef}
+            onSubmit={handleEditEstablishment}
+            initialData={{
+              name: establishment.name,
+              phone: establishment.phone,
+              type: establishment.type,
+              street: establishment.address.street,
+              street_number: establishment.address.street_number,
+              neighborhood: establishment.address.neighborhood,
+              zipcode: establishment.address.zipcode,
+              city: establishment.address.city,
+              state: establishment.address.state,
+            }}
+          >
             <InputsContainer>
               <AvatarContainer>
                 <AvatarInput>
@@ -263,7 +293,7 @@ function CreateEstablishment() {
             loading={loading}
             disabled={loading}
           >
-            Criar Estabelecimento
+            Editar Estabelecimento
           </Button>
         </ButtonContainer>
       </Content>
@@ -271,4 +301,4 @@ function CreateEstablishment() {
   );
 }
 
-export default CreateEstablishment;
+export default EditEstablishment;
