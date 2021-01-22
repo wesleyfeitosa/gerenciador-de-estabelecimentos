@@ -9,14 +9,14 @@ class EstablishmentsController {
     request: Request,
     response: Response,
   ): Promise<Response> {
-    const establishment_id = request.body;
+    const { establishment_id } = request.params;
 
     const updateEstablishmentAvatar = container.resolve(
       UpdateEstablishmentAvatarService,
     );
 
     const user = await updateEstablishmentAvatar.execute({
-      establishment_id,
+      establishment_id: String(establishment_id),
       avatarFilename: request.file.filename,
     });
 
