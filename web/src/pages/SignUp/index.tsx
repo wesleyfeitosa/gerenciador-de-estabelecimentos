@@ -4,6 +4,7 @@ import { Form } from '@unform/web';
 import { FiUser, FiLock } from 'react-icons/fi';
 import * as Yup from 'yup';
 
+import { useHistory } from 'react-router-dom';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import getValidationErrors from '../../utils/getValidationErrors';
@@ -33,6 +34,7 @@ function SignUp() {
   const [loading, setLoading] = useState(false);
   const formRef = useRef<FormHandles>(null);
   const { addToast } = useToast();
+  const { push } = useHistory();
 
   const handleSubmit = useCallback(
     async (data: SignUpFormData) => {
@@ -69,6 +71,8 @@ function SignUp() {
           description:
             'Você já pode fazer o seu logon no Gerenciamento de Estabelecimentos!',
         });
+
+        push('/');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
