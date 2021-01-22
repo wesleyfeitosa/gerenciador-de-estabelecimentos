@@ -29,6 +29,7 @@ class EstablishmentsController {
       state,
     } = request.body;
     const userId = request.user.id;
+    const avatar = request.file.filename;
 
     const updateEstablishment = container.resolve(CreateEstablishmentService);
 
@@ -43,7 +44,7 @@ class EstablishmentsController {
         zipcode,
         city,
         state,
-        avatar: request.file.filename,
+        avatar,
       },
       userId,
     );

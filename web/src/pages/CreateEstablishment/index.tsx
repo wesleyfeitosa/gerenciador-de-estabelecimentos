@@ -67,18 +67,20 @@ function CreateEstablishment() {
           abortEarly: false,
         });
 
-        const response = await api.post('/establishments', data);
+        const formData = new FormData();
 
-        const newEstablishment = response.data;
+        formData.append('name', data.name);
+        formData.append('phone', data.phone);
+        formData.append('type', data.type);
+        formData.append('street', data.street);
+        formData.append('street_number', String(data.street_number));
+        formData.append('neighborhood', data.neighborhood);
+        formData.append('zipcode', data.zipcode);
+        formData.append('city', data.city);
+        formData.append('state', data.state);
+        if (avatarFile) formData.append('avatar', avatarFile);
 
-        if (avatarFile) {
-          const imageData = new FormData();
-
-          imageData.append('establishment_id', newEstablishment.id);
-          imageData.append('avatar', avatarFile);
-
-          await api.patch('/avatar', imageData);
-        }
+        await api.post('/establishments', data);
 
         addToast({
           type: 'success',
