@@ -43,9 +43,7 @@ Sistema de gerenciamento de estabelecimentos, o usuário pode criar uma conta e 
 
 [App Mobile](https://user-images.githubusercontent.com/32942055/105610627-3f619b80-5d8f-11eb-915d-2e9416fc954c.mp4)
 
-<video width="320" height="240" controls>
-  <source src="https://user-images.githubusercontent.com/32942055/105610627-3f619b80-5d8f-11eb-915d-2e9416fc954c.mp4" type="video/mp4">
-</video>
+[<img src="https://j.gifs.com/4QAp86.gif" width="30%" />](https://user-images.githubusercontent.com/32942055/105610627-3f619b80-5d8f-11eb-915d-2e9416fc954c.mp4)
 
 ## :hammer: Deploy
 
