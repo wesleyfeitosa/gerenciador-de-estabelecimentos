@@ -1,15 +1,14 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Home from '../pages/Home';
+import Home, { EstablishmentData } from '../pages/Home';
 import CreateEstablishment from '../pages/CreateEstablishment';
 import EditEstablishment from '../pages/EditEstablishment';
 
 export type RootStackParamList = {
   Home: undefined;
   CreateEstablishment: undefined;
-  EditEstablishment: undefined;
+  EditEstablishment: { establishment: EstablishmentData };
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -20,7 +19,7 @@ function AppRoutes() {
       headerMode="none"
       screenOptions={{
         cardStyle: {
-          paddingTop: StatusBar.currentHeight,
+          paddingTop: 0,
         },
       }}
       initialRouteName="Home"

@@ -6,12 +6,18 @@ import { Container, ButtonText } from './styles';
 interface ButtonProps extends RectButtonProperties {
   children: string;
   enabled?: boolean;
+  loading?: boolean;
 }
 
-function Button({ children, enabled = true, ...rest }: ButtonProps) {
+function Button({
+  children,
+  enabled = true,
+  loading = false,
+  ...rest
+}: ButtonProps) {
   return (
     <Container enabled={enabled} {...rest}>
-      <ButtonText>{children}</ButtonText>
+      <ButtonText>{loading ? 'Carregando...' : children}</ButtonText>
     </Container>
   );
 }

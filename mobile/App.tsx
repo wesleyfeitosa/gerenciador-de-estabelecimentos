@@ -10,6 +10,7 @@
 
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar } from 'react-native';
 
 import GlobalContext from './src/hooks';
 import Routes from './src/routes';
@@ -17,6 +18,7 @@ import Routes from './src/routes';
 const App = () => {
   return (
     <NavigationContainer>
+      <StatusBar barStyle="light-content" backgroundColor="#00bfa6" />
       <GlobalContext>
         <Routes />
       </GlobalContext>

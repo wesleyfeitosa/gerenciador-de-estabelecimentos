@@ -19,7 +19,6 @@ import {
   TitleInputContainer,
   TitleInputText,
   ForgotPasswordText,
-  Loading,
   CreateAccountText,
 } from './styles';
 
@@ -33,7 +32,7 @@ interface SignUpFormData {
 function SignUp() {
   const navigation = useNavigation();
   const [isKeyboardVisible, setKeyboardVisible] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const formRef = useRef<FormHandles>(null);
 
   useEffect(() => {
@@ -59,7 +58,7 @@ function SignUp() {
   const handleSignUp = useCallback(
     async (data: SignUpFormData) => {
       try {
-        setIsLoading(true);
+        setLoading(true);
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
@@ -84,14 +83,14 @@ function SignUp() {
         });
 
         messageAlert('Usuário criado', 'Usuário criado com sucesso!');
-        setIsLoading(false);
+        setLoading(false);
         navigation.navigate('SignIn');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
 
           formRef.current?.setErrors(errors);
-          setIsLoading(false);
+          setLoading(false);
           return;
         }
 
@@ -155,7 +154,10 @@ function SignUp() {
             autoCompleteType="off"
           />
 
-          <Button onPress={() => formRef.current?.submitForm()}>
+          <Button
+            loading={loading}
+            onPress={() => formRef.current?.submitForm()}
+          >
             Criar Usuário
           </Button>
         </Form>

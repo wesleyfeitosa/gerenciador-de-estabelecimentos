@@ -28,14 +28,10 @@ interface SignInFormData {
   password: string;
 }
 
-interface ImperativeFunctions {
-  openModal: () => void;
-}
-
 const SignIn = () => {
   const navigation = useNavigation();
   const [isKeyboardVisible, setKeyboardVisible] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const { signIn } = useAuth();
   const formRef = useRef<FormHandles>(null);
   const emailInputRef = useRef<TextInput>(null);
@@ -64,7 +60,7 @@ const SignIn = () => {
   const handleSignIn = useCallback(
     async (data: SignInFormData) => {
       try {
-        setIsLoading(true);
+        setLoading(true);
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
@@ -80,12 +76,13 @@ const SignIn = () => {
           abortEarly: false,
         });
 
+        setLoading(false);
         await signIn({
           email: data.email,
           password: data.password,
         });
       } catch (err) {
-        setIsLoading(false);
+        setLoading(false);
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
 
@@ -149,7 +146,12 @@ const SignIn = () => {
             }}
           />
 
-          <Button onPress={() => formRef.current?.submitForm()}>Entrar</Button>
+          <Button
+            loading={loading}
+            onPress={() => formRef.current?.submitForm()}
+          >
+            Entrar
+          </Button>
         </Form>
 
         <ForgotPasswordText isKeyboardVisible={isKeyboardVisible}>
