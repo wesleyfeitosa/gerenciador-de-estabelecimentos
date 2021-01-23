@@ -31,6 +31,8 @@ Este projeto foi desenvolvido usando as seguintes tecnologias:
 - [Multer](https://www.npmjs.com/package/multer)
 - [Celebrate](https://github.com/arb/celebrate)
 - [TypeORM](https://typeorm.io/#/)
+- [Heroku](https://heroku.com)
+- [Amazon S3](https://aws.amazon.com/aws/s3)
 
 ## 💻 Projeto
 
@@ -38,6 +40,10 @@ Sistema de gerenciamento de estabelecimentos, o usuário pode criar uma conta e 
 
 <!-- <img src="assets/ecoleta.gif" frameborder="0" scrolling="no" style="-webkit-backface-visibility: hidden;-webkit-transform: scale(1);" ></img> -->
 <a href="https://www.loom.com/share/724d22c502034adc988f01a594de701d"> <p>React App - Watch Video</p> <img style="-webkit-backface-visibility: hidden;-webkit-transform: scale(1);" src="https://cdn.loom.com/sessions/thumbnails/724d22c502034adc988f01a594de701d-with-play.gif"> </a>
+
+- App Mobile
+
+https://user-images.githubusercontent.com/32942055/105610627-3f619b80-5d8f-11eb-915d-2e9416fc954c.mp4
 
 ## :hammer: Deploy
 
@@ -50,22 +56,24 @@ Sistema de gerenciamento de estabelecimentos, o usuário pode criar uma conta e 
 ```sh
 git clone https://github.com/wesleyfeitosa/gerenciador-de-estabelecimentos.git
 cd gerenciador-de-estabelecimentos
-yarn install
 ```
 #### Iniciando servidor
 ```sh
 cd server
+yarn install
 yarn start:docker
 yarn start:dev
 ```
-#### Starting Frontend
+#### Iniciando frontend web
 ```sh
 cd web
+yarn install
 yarn start
 ```
-#### Starting mobile
+#### Iniciando app mobile
 ```sh
 cd mobile
+yarn install
 yarn start
 ```
 
