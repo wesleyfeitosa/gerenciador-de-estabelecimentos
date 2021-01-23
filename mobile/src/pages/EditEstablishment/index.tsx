@@ -202,7 +202,7 @@ function EditEstablishment({ navigation, route }: Props) {
               />
 
               <TitleInputContainer>
-                <Icon name="at-sign" size={20} color="#222222" />
+                <Icon name="phone" size={20} color="#222222" />
                 <TitleInputText>Telefone</TitleInputText>
               </TitleInputContainer>
               <Input
@@ -212,43 +212,43 @@ function EditEstablishment({ navigation, route }: Props) {
               />
 
               <TitleInputContainer>
-                <Icon name="lock" size={20} color="#222222" />
+                <Icon name="type" size={20} color="#222222" />
                 <TitleInputText>Tipo</TitleInputText>
               </TitleInputContainer>
               <Input name="type" returnKeyType="next" />
 
               <TitleInputContainer>
-                <Icon name="lock" size={20} color="#222222" />
+                <Icon name="map-pin" size={20} color="#222222" />
                 <TitleInputText>Nome da Rua</TitleInputText>
               </TitleInputContainer>
               <Input name="street" returnKeyType="next" />
 
               <TitleInputContainer>
-                <Icon name="lock" size={20} color="#222222" />
+                <Icon name="map-pin" size={20} color="#222222" />
                 <TitleInputText>Número da Rua</TitleInputText>
               </TitleInputContainer>
               <Input name="street_number" returnKeyType="next" />
 
               <TitleInputContainer>
-                <Icon name="lock" size={20} color="#222222" />
+                <Icon name="map-pin" size={20} color="#222222" />
                 <TitleInputText>Bairro</TitleInputText>
               </TitleInputContainer>
               <Input name="neighborhood" returnKeyType="next" />
 
               <TitleInputContainer>
-                <Icon name="lock" size={20} color="#222222" />
+                <Icon name="map-pin" size={20} color="#222222" />
                 <TitleInputText>CEP</TitleInputText>
               </TitleInputContainer>
               <Input name="zipcode" returnKeyType="next" />
 
               <TitleInputContainer>
-                <Icon name="lock" size={20} color="#222222" />
+                <Icon name="map-pin" size={20} color="#222222" />
                 <TitleInputText>Cidade</TitleInputText>
               </TitleInputContainer>
               <Input name="city" returnKeyType="next" />
 
               <TitleInputContainer>
-                <Icon name="lock" size={20} color="#222222" />
+                <Icon name="map-pin" size={20} color="#222222" />
                 <TitleInputText>Estado</TitleInputText>
               </TitleInputContainer>
               <Input name="state" returnKeyType="next" />
