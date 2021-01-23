@@ -41,9 +41,9 @@ Sistema de gerenciamento de estabelecimentos, o usuário pode criar uma conta e 
 <!-- <img src="assets/ecoleta.gif" frameborder="0" scrolling="no" style="-webkit-backface-visibility: hidden;-webkit-transform: scale(1);" ></img> -->
 <a href="https://www.loom.com/share/724d22c502034adc988f01a594de701d"> <p>React App - Watch Video</p> <img style="-webkit-backface-visibility: hidden;-webkit-transform: scale(1);" src="https://cdn.loom.com/sessions/thumbnails/724d22c502034adc988f01a594de701d-with-play.gif"> </a>
 
-- App Mobile
+[App Mobile](https://user-images.githubusercontent.com/32942055/105610627-3f619b80-5d8f-11eb-915d-2e9416fc954c.mp4)
 
-<video>
+<video width="320" height="240" controls>
   <source src="https://user-images.githubusercontent.com/32942055/105610627-3f619b80-5d8f-11eb-915d-2e9416fc954c.mp4" type="video/mp4">
 </video>
 
