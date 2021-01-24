@@ -73,6 +73,7 @@ function SignUp() {
         });
 
         push('/');
+        setLoading(false);
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -93,7 +94,7 @@ function SignUp() {
         setLoading(false);
       }
     },
-    [addToast]
+    [addToast, push]
   );
 
   return (

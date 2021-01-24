@@ -24,10 +24,20 @@ export const FormContainer = styled.div`
     align-items: center;
     justify-content: space-between;
   }
+
+  @media (max-width: 600px) {
+    form {
+      flex-direction: column;
+    }
+  }
 `;
 
 export const InputsContainer = styled.div`
   width: 48%;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 export const AvatarContainer = styled.div`
