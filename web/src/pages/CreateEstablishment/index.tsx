@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useCallback, useRef, useState } from 'react';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
-import { FiUser, FiLock, FiCamera } from 'react-icons/fi';
+import { FiUser, FiPhone, FiCamera, FiType, FiMapPin } from 'react-icons/fi';
 import * as Yup from 'yup';
 import { useHistory } from 'react-router-dom';
 
@@ -177,7 +177,7 @@ function CreateEstablishment() {
                   name="phone"
                   type="text"
                   maxLength={14}
-                  icon={FiLock}
+                  icon={FiPhone}
                   placeholder="Insira o telefone"
                 />
               </InputField>
@@ -187,7 +187,7 @@ function CreateEstablishment() {
                 <Input
                   name="type"
                   type="text"
-                  icon={FiLock}
+                  icon={FiType}
                   placeholder="Insira o tipo"
                 />
               </InputField>
@@ -199,7 +199,7 @@ function CreateEstablishment() {
                 <Input
                   name="street"
                   type="text"
-                  icon={FiUser}
+                  icon={FiMapPin}
                   placeholder="Insira o endereço"
                 />
               </InputField>
@@ -209,7 +209,7 @@ function CreateEstablishment() {
                 <Input
                   name="street_number"
                   type="text"
-                  icon={FiLock}
+                  icon={FiMapPin}
                   placeholder="Insira o número da rua"
                 />
               </InputField>
@@ -219,7 +219,7 @@ function CreateEstablishment() {
                 <Input
                   name="neighborhood"
                   type="text"
-                  icon={FiLock}
+                  icon={FiMapPin}
                   placeholder="Insira o Bairro"
                 />
               </InputField>
@@ -229,7 +229,7 @@ function CreateEstablishment() {
                 <Input
                   name="zipcode"
                   type="text"
-                  icon={FiUser}
+                  icon={FiMapPin}
                   placeholder="Insira o CEP"
                 />
               </InputField>
@@ -239,7 +239,7 @@ function CreateEstablishment() {
                 <Input
                   name="city"
                   type="text"
-                  icon={FiLock}
+                  icon={FiMapPin}
                   placeholder="Insira a cidade em que é localizada"
                 />
               </InputField>
@@ -249,7 +249,7 @@ function CreateEstablishment() {
                 <Input
                   name="state"
                   type="text"
-                  icon={FiLock}
+                  icon={FiMapPin}
                   placeholder="Insira o estado em que é localizado"
                 />
               </InputField>

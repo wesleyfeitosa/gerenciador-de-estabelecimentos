@@ -7,20 +7,41 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   align-items: stretch;
+
+  @media (max-width: 1200px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const Content = styled.div`
   width: 50vw;
   height: 100vh;
-  padding: 180px;
+  padding: 120px;
 
   display: flex;
   align-items: center;
   justify-content: flex-end;
+
+  @media (max-width: 1200px) {
+    padding: 20px;
+    width: 100vw;
+    justify-content: center;
+  }
 `;
 
 export const FormContainer = styled.div`
   max-width: 400px;
+
+  @media (max-width: 440px) {
+    max-width: 300px;
+  }
+
+  form button {
+    @media (max-width: 440px) {
+      max-width: 300px;
+    }
+  }
 `;
 
 export const Title = styled.div`

@@ -12,6 +12,10 @@ export const Content = styled.div`
   flex: 1;
   max-width: 1300px;
   width: 90vw;
+
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 `;
 
 export const SearchContainer = styled.div`
@@ -25,7 +29,7 @@ export const SearchContainer = styled.div`
   }
 
   button {
-    padding: 0 10px;
+    padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,12 +38,32 @@ export const SearchContainer = styled.div`
     background-color: #00bfa6;
     color: #ffffff;
   }
+
+  @media (max-width: 430px) {
+    flex-direction: column;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    select {
+      margin: 2px;
+    }
+
+    button {
+      margin: 2px;
+    }
+  }
 `;
 
 export const EstablishmentTable = styled.table`
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
+
+  @media (max-width: 700px) {
+    width: 200%;
+  }
 `;
 
 export const TableHeaderLine = styled.tr`

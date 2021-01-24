@@ -13,6 +13,7 @@ export const HeaderContent = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 
   max-width: 1300px;
   width: 90vw;
@@ -20,6 +21,8 @@ export const HeaderContent = styled.div`
   div {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
